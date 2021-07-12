@@ -410,11 +410,17 @@ namespace AntDesign
         private async Task OnBlurAsync()
         {
             _focused = false;
+            if (string.IsNullOrWhiteSpace(_inputString))
+            {
+                _inputString = null;
+            }
             if (_inputString == null)
             {
                 await ChangeValueAsync(Value);
                 return;
             }
+
+       
 
             if (!CurrentValueAsString.Equals(_inputString))
                 CurrentValueAsString = _inputString;
